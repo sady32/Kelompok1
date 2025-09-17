@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Tim Kami</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Gaya Umum */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .header nav ul li {
+            margin-left: 25px;
+        }
+
+        .header nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .header nav ul li a:hover {
+            color: #007bff;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: #e9f0ff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #666;
+        }
+
+        .cta-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Bagian Anggota Tim */
+        .team-members {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .team-members .container {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .member-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid #007bff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-card h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .member-card p {
+            color: #777;
+            font-weight: 400;
+        }
+        
+        /* Bagian Proyek */
+        .projects-section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #f0f3f6;
+        }
+
+        .projects-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .project-info h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .project-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        /* Modal (Pop-up) */
+        .modal {
+            display: none; /* Sembunyikan secara default */
+            position: fixed;
+            z-index: 200;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Rasio 16:9 */
+            height: 0;
+            margin-bottom: 20px;
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">Tim Kami</a>
+            <nav>
+                <ul>
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#team">Tentang Kami</a></li>
+                    <li><a href="#projects-section">Portofolio</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="beranda" class="hero-section">
+        <div class="container">
+            <h1>Menciptakan Solusi Digital Terbaik</h1>
+            <p>Kami adalah tim desainer, pengembang, dan pemasar yang berdedikasi untuk mewujudkan ide Anda.</p>
+            <a href="#projects-section" class="cta-button">Lihat Proyek Kami</a>
+        </div>
+    </section>
+
+    <section id="team" class="team-members">
+        <div class="container">
+            <div class="member-card">
+                <img src="images/sadi.jpeg" alt="Foto [Nama Individu 1]">
+                <h3>[rusadi]</h3>
+                <p>Programmer</p>
+            </div>
+
+            <div class="member-card">
+                <img src="images/ihsan.jpeg" alt="Foto [Nama Individu 2]">
+                <h3>[ihsanul amin]</h3>
+                <p>Pengembang Web</p>
+            </div>
+
+            <div class="member-card">
+                <img src="images/amat.jpeg" alt="Foto [Nama Individu 3]">
+                <h3>[ahmad haitami]</h3>
+                <p>Spesialis Presentasi</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects-section" class="projects-section">
+        <div class="container">
+            <h2>Proyek Pilihan Kami</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="openModal('project1-modal')">
+                    <img src="thumnail/thumnail1.jpeg" alt="Proyek 1">
+                    <div class="project-info">
+                        <h4>SMART LAMP</h4>
+                        <p>Mengontrol on off lampu lewat hp.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal('project2-modal')">
+                    <img src="thumnail/thumnail2.jpeg" alt="Proyek 2">
+                    <div class="project-info">
+                        <h4>Absensi digital</h4>
+                        <p>absen menggunakan kartu dan bisa di lihat lewat komputer.</p>
+                    </div>
+                </div
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="project1-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('project1-modal')">&times;</span>
+            <h3>Aplikasi Mobile E-commerce</h3>
+            <div class="video-container">
+                <video controls>
+                    <source src="video/video1.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+            </div>
+            <p><strong>Penjelasan Proyek:</strong> Kami merancang dan membangun aplikasi mobile e-commerce ini untuk memberikan pengalaman belanja yang mulus dan intuitif bagi pengguna. Fokus utama kami adalah navigasi yang mudah, antarmuka yang bersih, dan waktu muat yang cepat. Kami menggunakan React Native untuk memastikan aplikasi berjalan lancar di iOS dan Android. Kolaborasi dengan tim pemasaran memastikan strategi konten yang menarik untuk setiap produk.</p>
+        </div>
+    </div>
+    
+    <div id="project2-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('project2-modal')">&times;</span>
+            <h3>Situs Web Perusahaan Kreatif</h3>
+            <div class="video-container">
+                <video controls>
+                    <source src="video/video2.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+            </div>
+            <p><strong>Penjelasan Proyek:</strong> Proyek ini adalah kolaborasi penuh untuk menciptakan situs web yang mencerminkan identitas kreatif perusahaan. Kami mengintegrasikan desain visual yang unik, animasi yang halus, dan arsitektur web yang solid. Konten situs dirancang untuk menarik audiens target dan meningkatkan interaksi. Hasilnya adalah platform digital yang kuat dan menarik secara visual.</p>
+        </div>
+    </div>
+    
+    <div id="project3-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('project3-modal')">&times;</span>
+            <h3>Kampanye Pemasaran Digital</h3>
+            <div class="video-container">
+                <video controls>
+                    <source src="nama-video3.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+            </div>
+            <p><strong>Penjelasan Proyek:</strong> Kami mengembangkan kampanye pemasaran digital komprehensif untuk meluncurkan produk baru. Kami mulai dari riset pasar, pembuatan strategi konten, hingga produksi video promosi yang menarik. Kampanye ini berhasil meningkatkan jangkauan brand sebesar 40% dan mengkonversi banyak pelanggan potensial.</p>
+        </div>
+    </div>
+
+<section id="kontak">
+    <footer class="footer">
+        <div class="container">
+			<p>hubungi kami!</p>
+			<!-- Telepon -->
+      <div class="card h-full flex flex-col justify-center items-center">
+        <h3 class="text-xl font-semibold mb-3">📞 Telepon</h3>
+        <a href="tel:+6285820378790" 
+           class="w-full py-3 px-5 rounded-lg bg-gradient-to-r from-green-500 to-green-700 
+                  hover:from-green-600 hover:to-green-800 transition text-white font-medium text-center">
+          (Hotline) +62 858-2037-8790
+        </a>
+      </div>
+	  
+	   <div class="grid grid-cols-1 md:grid-cols-1 gap-3">
+      <!-- Email -->
+      <div class="card h-full flex flex-col justify-center items-center">
+        <h3 class="text-xl font-semibold mb-3">📧 Email</h3>
+        <a href="mailto:ihsanul897@gmail.com" 
+           class="w-full py-3 px-5 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 
+                  hover:from-blue-600 hover:to-blue-800 transition text-white font-medium text-center">
+          info@rfidindonesia.com
+        </a>
+      </div>
+	  
+	  <!-- Alamat -->
+      <div class="card h-full flex flex-col justify-center items-center">
+        <h3 class="text-xl font-semibold mb-3">📍 Alamat</h3>
+        <p class="leading-relaxed text-gray-200 text-center">
+          smks shaklatiyah bitin <br />
+          bitin, Indonesia
+        </p>
+      </div>
+			
+            <p>&copy; 2025 Portofolio Tim Kami. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+	</section>
+    
+    <script>
+        // Fungsi untuk membuka modal dan memutar video
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = "block";
+            const video = modal.querySelector('video');
+            if (video) {
+                video.play();
+            }
+        }
+        
+        // Fungsi untuk menutup modal dan menghentikan video
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = "none";
+            const video = modal.querySelector('video');
+            if (video) {
+                video.pause();
+                video.currentTime = 0; // Kembalikan ke awal video
+            }
+        }
+        
+        // Menutup modal jika pengguna mengklik di luar area modal
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    closeModal(modal.id);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
