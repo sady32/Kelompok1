@@ -5,12 +5,14 @@ function openModal(modalId) {
   const video = modal.querySelector('video');
   if (video) video.play();
 }
+
 function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   modal.style.display = "none";
   const video = modal.querySelector('video');
   if (video) { video.pause(); video.currentTime = 0; }
 }
+
 window.onclick = function(event) {
   const modals = document.querySelectorAll('.modal');
   modals.forEach(modal => { if (event.target == modal) closeModal(modal.id); });
@@ -55,6 +57,7 @@ const colors = [
   "rgba(0, 128, 255, 0.8)"
 ];
 
+// Buat partikel awal
 for (let i = 0; i < 70; i++) {
   const depth = Math.random();
   particles.push({
@@ -72,18 +75,23 @@ for (let i = 0; i < 70; i++) {
   });
 }
 
+// Animasi loop
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   if (!mouse.x && !mouse.y) {
     virtualNode.angle += 0.01;
     virtualNode.x = canvas.width/2 + Math.cos(virtualNode.angle)*virtualNode.radius;
     virtualNode.y = canvas.height/2 + Math.sin(virtualNode.angle)*virtualNode.radius;
   }
+
   particles.forEach(p => {
     p.x = p.baseX + p.dx * 50 + scrollOffset * 0.3 * p.depth;
     p.y = p.baseY + p.dy * 50 + scrollOffset * 0.2 * p.depth;
+
     p.opacity += p.fadeSpeed;
     if (p.opacity > 1 || p.opacity < 0) p.fadeSpeed *= -1;
+
     ctx.beginPath();
     ctx.fillStyle = p.color;
     ctx.globalAlpha = p.opacity;
@@ -92,9 +100,70 @@ function animate() {
     ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
     ctx.fill();
     ctx.globalAlpha = 1;
-    p.baseX += p.dx; p.baseY += p.dy;
+
+    // Update posisi dasar
+    p.baseX += p.dx; 
+    p.baseY += p.dy;
     if (p.baseX < 0 || p.baseX > canvas.width) p.dx *= -1;
     if (p.baseY < 0 || p.baseY > canvas.height) p.dy *= -1;
+
+    // Efek tarik mouse/virtual node
     const nodeX = mouse.x || virtualNode.x;
     const nodeY = mouse.y || virtualNode.y;
-    if (nodeX
+    if (nodeX && nodeY) {
+      const dx = p.x - nodeX, dy = p.y - nodeY;
+      const dist = Math.sqrt(dx*dx+dy*dy);
+      if (dist < 120) { 
+        p.baseX -= dx*0.005*p.depth; 
+        p.baseY -= dy*0.005*p.depth; 
+      }
+    }
+  });
+
+  // Garis antar partikel
+  for (let i=0;i<particles.length;i++){
+    for (let j=i+1;j<particles.length;j++){
+      const dx=particles[i].x-particles[j].x;
+      const dy=particles[i].y-particles[j].y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if (dist<130){
+        const gradient=ctx.createLinearGradient(particles[i].x,particles[i].y,particles[j].x,particles[j].y);
+        gradient.addColorStop(0,particles[i].color); 
+        gradient.addColorStop(1,particles[j].color);
+        ctx.beginPath();
+        ctx.strokeStyle=gradient;
+        ctx.globalAlpha=(1-dist/130)*0.6;
+        ctx.lineWidth=0.8;
+        ctx.moveTo(particles[i].x,particles[i].y);
+        ctx.lineTo(particles[j].x,particles[j].y);
+        ctx.stroke(); 
+        ctx.globalAlpha=1;
+      }
+    }
+
+    // Garis ke node (mouse atau virtual)
+    const nodeX=mouse.x||virtualNode.x, nodeY=mouse.y||virtualNode.y;
+    if(nodeX&&nodeY){
+      const dx=particles[i].x-nodeX, dy=particles[i].y-nodeY;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<150){
+        ctx.beginPath();
+        const gradient=ctx.createLinearGradient(particles[i].x,particles[i].y,nodeX,nodeY);
+        gradient.addColorStop(0,particles[i].color);
+        gradient.addColorStop(1,"rgba(255,255,255,0.7)");
+        ctx.strokeStyle=gradient;
+        ctx.globalAlpha=(1-dist/150)*0.7;
+        ctx.lineWidth=0.8;
+        ctx.moveTo(particles[i].x,particles[i].y);
+        ctx.lineTo(nodeX,nodeY);
+        ctx.stroke(); 
+        ctx.globalAlpha=1;
+      }
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+      
