@@ -71,7 +71,7 @@
       color: #007bff;
     }
 
-    /* Hero Section dengan gradient & canvas partikel */
+    /* Hero Section dengan gradient & canvas */
     .hero-section {
       text-align: center;
       padding: 120px 20px;
@@ -331,10 +331,101 @@
     </div>
   </section>
 
-  <!-- === Bagian lain (team, projects, modal, kontak, footer) tetap sama seperti yang kamu kirim === -->
+  <section id="team" class="team-members">
+    <div class="container">
+      <div class="member-card">
+        <img src="images/sadi.jpeg" alt="Foto Rusadi">
+        <h3>Rusadi</h3>
+        <p>Programmer</p>
+      </div>
+      <div class="member-card">
+        <img src="images/ihsan.jpeg" alt="Foto Ihsanul Amin">
+        <h3>Ihsanul Amin</h3>
+        <p>Pengembang Web</p>
+      </div>
+      <div class="member-card">
+        <img src="images/amat.jpeg" alt="Foto Ahmad Haitami">
+        <h3>Ahmad Haitami</h3>
+        <p>Spesialis Presentasi</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects-section" class="projects-section">
+    <div class="container">
+      <h2>Proyek Pilihan Kami</h2>
+      <div class="projects-grid">
+        <div class="project-card" onclick="openModal('project1-modal')">
+          <img src="thumnail/thumnail1.jpeg" alt="Proyek 1">
+          <div class="project-info">
+            <h4>SMART LAMP</h4>
+            <p>Mengontrol on/off lampu lewat HP.</p>
+          </div>
+        </div>
+        <div class="project-card" onclick="openModal('project2-modal')">
+          <img src="thumnail/thumnail2.jpeg" alt="Proyek 2">
+          <div class="project-info">
+            <h4>Absensi Digital</h4>
+            <p>Absen menggunakan kartu dan bisa dilihat lewat komputer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Project 1 -->
+  <div id="project1-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal('project1-modal')">&times;</span>
+      <h3>SMART LAMP</h3>
+      <div class="video-container">
+        <video controls>
+          <source src="video/video1.mp4" type="video/mp4">
+          Browser Anda tidak mendukung tag video.
+        </video>
+      </div>
+      <p><strong>Penjelasan Proyek:</strong> Proyek ini adalah untuk memudahkan mengontrol menyalakan dan mematikan lampu dan alat elektronik lainnya dengan mudah lewat hp, jadi bisa untuk menyalakan atau mematikan alat elektronik lewat hp walau tidak ada dirumah asalkan alatnya terhubung ke internet dan hp yang untuk mengontrol harus terhubung ke internet juga.</p>
+    </div>
+  </div>
+
+  <!-- Modal Project 2 -->
+  <div id="project2-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal('project2-modal')">&times;</span>
+      <h3>Absensi Digital</h3>
+      <div class="video-container">
+        <video controls>
+          <source src="video/video2.mp4" type="video/mp4">
+          Browser Anda tidak mendukung tag video.
+        </video>
+      </div>
+      <p><strong>Penjelasan Proyek:</strong> RFID SHABIT adalah sistem absensi siswa berbasis iot dengan menggunakan akses internet dan memasukkan data kegoogle sheet anda cara kerjanya arduino uno menerima sinyal dari rfid dan data yang diterima ditampilkan dilcd i2c setelah itu data itu ditulis diserial monitor arduino uno dan masuk dimodul wifi wemos d1 mini yang tersambung keinternet, dan data yang diterima kembali dikirim dengan metode POST hingga sampai digoogle sheet anda.</p>
+    </div>
+  </div>
+
+  <section id="kontak">
+    <footer class="footer">
+      <div class="container">
+        <p>Hubungi Kami!</p>
+        <div>
+          <h3>📞 Telepon</h3>
+          <a href="tel:+6285820378790">+62 858-2037-8790</a>
+        </div>
+        <div>
+          <h3>📧 Email</h3>
+          <a href="mailto:ihsanul897@gmail.com">info@rfidindonesia.com</a>
+        </div>
+        <div>
+          <h3>📍 Alamat</h3>
+          <p>SMKS Shaklatiyah Bitin<br>Bitin, Indonesia</p>
+        </div>
+        <p>&copy; 2025 Portofolio Tim Kami. Semua hak dilindungi.</p>
+      </div>
+    </footer>
+  </section>
 
   <script>
-    // Fungsi Modal
+    // Modal
     function openModal(modalId) {
       const modal = document.getElementById(modalId);
       modal.style.display = "block";
@@ -349,12 +440,10 @@
     }
     window.onclick = function(event) {
       const modals = document.querySelectorAll('.modal');
-      modals.forEach(modal => {
-        if (event.target == modal) closeModal(modal.id);
-      });
+      modals.forEach(modal => { if (event.target == modal) closeModal(modal.id); });
     }
 
-    // Script Partikel Neon Interaktif
+    // Partikel Neon Interaktif
     const canvas = document.getElementById("particles");
     const ctx = canvas.getContext("2d");
     let particles = [];
@@ -481,4 +570,5 @@
     animate();
   </script>
 </body>
-</html>
+  </html>
+  
