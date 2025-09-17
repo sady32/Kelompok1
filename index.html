@@ -4,310 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portofolio Tim Kami</title>
-  
+
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Gaya Umum */
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      background-color: #f4f7f6;
-      color: #333;
-    }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Header */
-    .header {
-      background-color: #fff;
-      padding: 20px 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #333;
-      text-decoration: none;
-    }
-
-    .header nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-    }
-
-    .header nav ul li {
-      margin-left: 25px;
-    }
-
-    .header nav ul li a {
-      text-decoration: none;
-      color: #555;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    .header nav ul li a:hover {
-      color: #007bff;
-    }
-
-    /* Hero Section dengan gradient & canvas */
-    .hero-section {
-      text-align: center;
-      padding: 120px 20px;
-      background: linear-gradient(-45deg, #6a11cb, #2575fc, #007bff, #00c6ff);
-      background-size: 400% 400%;
-      animation: gradientMove 12s ease infinite;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    #particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .hero-section h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      color: #fff;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    }
-
-    .hero-section p {
-      font-size: 1.2rem;
-      margin-bottom: 40px;
-      color: #f0f0f0;
-    }
-
-    .cta-button {
-      background-color: #fff;
-      color: #007bff;
-      padding: 15px 30px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .cta-button:hover {
-      background-color: #007bff;
-      color: #fff;
-      transform: scale(1.08);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-    }
-
-    /* Bagian Anggota Tim */
-    .team-members {
-      padding: 80px 0;
-      text-align: center;
-    }
-
-    .team-members .container {
-      display: flex;
-      justify-content: space-around;
-      gap: 30px;
-    }
-
-    .member-card {
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-      flex: 1;
-      transition: transform 0.3s;
-      text-align: center;
-    }
-
-    .member-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .member-card img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 3px solid #007bff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .member-card h3 {
-      margin: 10px 0;
-      color: #333;
-    }
-
-    .member-card p {
-      color: #777;
-      font-weight: 400;
-    }
-    
-    /* Bagian Proyek */
-    .projects-section {
-      padding: 80px 0;
-      text-align: center;
-      background-color: #f0f3f6;
-    }
-
-    .projects-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      color: #2c3e50;
-    }
-    
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .project-card {
-      background-color: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-      cursor: pointer;
-    }
-
-    .project-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .project-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .project-info {
-      padding: 20px;
-      text-align: left;
-    }
-
-    .project-info h4 {
-      margin: 0 0 10px 0;
-      font-size: 1.2rem;
-    }
-
-    .project-info p {
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    .project-button {
-      display: inline-block;
-      background-color: #007bff;
-      color: #fff;
-      padding: 8px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-      margin-top: 15px;
-    }
-
-    /* Modal (Pop-up) */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 200;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-    }
-
-    .modal-content {
-      background-color: #fff;
-      margin: 5% auto;
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 800px;
-      position: relative;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .modal-content h3 {
-      margin-top: 0;
-    }
-
-    .close-button {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      cursor: pointer;
-    }
-    
-    .video-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      height: 0;
-      margin-bottom: 20px;
-    }
-    
-    .video-container video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 8px;
-    }
-
-    /* Footer */
-    .footer {
-      background-color: #2c3e50;
-      color: #fff;
-      text-align: center;
-      padding: 30px 0;
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- Header -->
   <header class="header">
     <div class="container">
       <a href="#" class="logo">Tim Kami</a>
@@ -322,6 +28,7 @@
     </div>
   </header>
 
+  <!-- Hero Section -->
   <section id="beranda" class="hero-section">
     <canvas id="particles"></canvas>
     <div class="container">
@@ -331,6 +38,7 @@
     </div>
   </section>
 
+  <!-- Anggota Tim -->
   <section id="team" class="team-members">
     <div class="container">
       <div class="member-card">
@@ -351,6 +59,7 @@
     </div>
   </section>
 
+  <!-- Proyek -->
   <section id="projects-section" class="projects-section">
     <div class="container">
       <h2>Proyek Pilihan Kami</h2>
@@ -384,7 +93,7 @@
           Browser Anda tidak mendukung tag video.
         </video>
       </div>
-      <p><strong>Penjelasan Proyek:</strong> Proyek ini adalah untuk memudahkan mengontrol menyalakan dan mematikan lampu dan alat elektronik lainnya dengan mudah lewat hp, jadi bisa untuk menyalakan atau mematikan alat elektronik lewat hp walau tidak ada dirumah asalkan alatnya terhubung ke internet dan hp yang untuk mengontrol harus terhubung ke internet juga.</p>
+      <p><strong>Penjelasan Proyek:</strong> Proyek ini adalah untuk memudahkan mengontrol menyalakan dan mematikan lampu lewat hp, bahkan dari luar rumah asalkan terhubung internet.</p>
     </div>
   </div>
 
@@ -399,10 +108,11 @@
           Browser Anda tidak mendukung tag video.
         </video>
       </div>
-      <p><strong>Penjelasan Proyek:</strong> RFID SHABIT adalah sistem absensi siswa berbasis iot dengan menggunakan akses internet dan memasukkan data kegoogle sheet anda cara kerjanya arduino uno menerima sinyal dari rfid dan data yang diterima ditampilkan dilcd i2c setelah itu data itu ditulis diserial monitor arduino uno dan masuk dimodul wifi wemos d1 mini yang tersambung keinternet, dan data yang diterima kembali dikirim dengan metode POST hingga sampai digoogle sheet anda.</p>
+      <p><strong>Penjelasan Proyek:</strong> RFID SHABIT adalah sistem absensi siswa berbasis IoT yang mengirimkan data ke Google Sheet secara real-time melalui internet.</p>
     </div>
   </div>
 
+  <!-- Footer -->
   <section id="kontak">
     <footer class="footer">
       <div class="container">
@@ -424,151 +134,7 @@
     </footer>
   </section>
 
-  <script>
-    // Modal
-    function openModal(modalId) {
-      const modal = document.getElementById(modalId);
-      modal.style.display = "block";
-      const video = modal.querySelector('video');
-      if (video) video.play();
-    }
-    function closeModal(modalId) {
-      const modal = document.getElementById(modalId);
-      modal.style.display = "none";
-      const video = modal.querySelector('video');
-      if (video) { video.pause(); video.currentTime = 0; }
-    }
-    window.onclick = function(event) {
-      const modals = document.querySelectorAll('.modal');
-      modals.forEach(modal => { if (event.target == modal) closeModal(modal.id); });
-    }
-
-    // Partikel Neon Interaktif
-    const canvas = document.getElementById("particles");
-    const ctx = canvas.getContext("2d");
-    let particles = [];
-    let mouse = { x: null, y: null };
-    let virtualNode = { x: null, y: null, angle: 0, radius: 80 };
-    let scrollOffset = 0;
-
-    function resizeCanvas() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      if (!mouse.x && !mouse.y) {
-        virtualNode.x = canvas.width / 2;
-        virtualNode.y = canvas.height / 2;
-      }
-    }
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-
-    window.addEventListener("mousemove", e => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    });
-    window.addEventListener("mouseleave", () => { mouse.x = null; mouse.y = null; });
-
-    window.addEventListener("scroll", () => {
-      scrollOffset = window.scrollY * 0.2;
-      document.querySelector(".hero-section").style.backgroundPosition = `center ${scrollOffset}px`;
-    });
-
-    const colors = [
-      "rgba(0, 255, 255, 0.8)",
-      "rgba(255, 0, 255, 0.8)",
-      "rgba(0, 255, 128, 0.8)",
-      "rgba(255, 255, 0, 0.8)",
-      "rgba(0, 128, 255, 0.8)"
-    ];
-
-    for (let i = 0; i < 70; i++) {
-      const depth = Math.random();
-      particles.push({
-        baseX: Math.random() * canvas.width,
-        baseY: Math.random() * canvas.height,
-        x: 0, y: 0,
-        r: 1 + depth * 4,
-        dx: (Math.random() - 0.5) * (0.2 + depth * 0.8),
-        dy: (Math.random() - 0.5) * (0.2 + depth * 0.8),
-        blur: 4 + depth * 12,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        depth,
-        opacity: Math.random(),
-        fadeSpeed: 0.005 + Math.random() * 0.01
-      });
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      if (!mouse.x && !mouse.y) {
-        virtualNode.angle += 0.01;
-        virtualNode.x = canvas.width/2 + Math.cos(virtualNode.angle)*virtualNode.radius;
-        virtualNode.y = canvas.height/2 + Math.sin(virtualNode.angle)*virtualNode.radius;
-      }
-      particles.forEach(p => {
-        p.x = p.baseX + p.dx * 50 + scrollOffset * 0.3 * p.depth;
-        p.y = p.baseY + p.dy * 50 + scrollOffset * 0.2 * p.depth;
-        p.opacity += p.fadeSpeed;
-        if (p.opacity > 1 || p.opacity < 0) p.fadeSpeed *= -1;
-        ctx.beginPath();
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = p.opacity;
-        ctx.shadowBlur = p.blur;
-        ctx.shadowColor = p.color;
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-        ctx.fill();
-        ctx.globalAlpha = 1;
-        p.baseX += p.dx; p.baseY += p.dy;
-        if (p.baseX < 0 || p.baseX > canvas.width) p.dx *= -1;
-        if (p.baseY < 0 || p.baseY > canvas.height) p.dy *= -1;
-        const nodeX = mouse.x || virtualNode.x;
-        const nodeY = mouse.y || virtualNode.y;
-        if (nodeX && nodeY) {
-          const dx = p.x - nodeX, dy = p.y - nodeY;
-          const dist = Math.sqrt(dx*dx+dy*dy);
-          if (dist < 120) { p.baseX -= dx*0.005*p.depth; p.baseY -= dy*0.005*p.depth; }
-        }
-      });
-      for (let i=0;i<particles.length;i++){
-        for (let j=i+1;j<particles.length;j++){
-          const dx=particles[i].x-particles[j].x;
-          const dy=particles[i].y-particles[j].y;
-          const dist=Math.sqrt(dx*dx+dy*dy);
-          if (dist<130){
-            const gradient=ctx.createLinearGradient(particles[i].x,particles[i].y,particles[j].x,particles[j].y);
-            gradient.addColorStop(0,particles[i].color); gradient.addColorStop(1,particles[j].color);
-            ctx.beginPath();
-            ctx.strokeStyle=gradient;
-            ctx.globalAlpha=(1-dist/130)*0.6;
-            ctx.lineWidth=0.8;
-            ctx.moveTo(particles[i].x,particles[i].y);
-            ctx.lineTo(particles[j].x,particles[j].y);
-            ctx.stroke(); ctx.globalAlpha=1;
-          }
-        }
-        const nodeX=mouse.x||virtualNode.x, nodeY=mouse.y||virtualNode.y;
-        if(nodeX&&nodeY){
-          const dx=particles[i].x-nodeX, dy=particles[i].y-nodeY;
-          const dist=Math.sqrt(dx*dx+dy*dy);
-          if(dist<150){
-            ctx.beginPath();
-            const gradient=ctx.createLinearGradient(particles[i].x,particles[i].y,nodeX,nodeY);
-            gradient.addColorStop(0,particles[i].color);
-            gradient.addColorStop(1,"rgba(255,255,255,0.7)");
-            ctx.strokeStyle=gradient;
-            ctx.globalAlpha=(1-dist/150)*0.7;
-            ctx.lineWidth=0.8;
-            ctx.moveTo(particles[i].x,particles[i].y);
-            ctx.lineTo(nodeX,nodeY);
-            ctx.stroke(); ctx.globalAlpha=1;
-          }
-        }
-      }
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
-  </html>
-  
+</html>
